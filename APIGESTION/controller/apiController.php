@@ -25,7 +25,25 @@ class apiController{
     public function obtainAll(){
         $initModel = new apiModel();
         $callModel = $initModel->getAll();
-        return $this->Tojson($callModel);
+        if ($callModel) {
+            $response = [
+            "ok" => true,
+            "message" => "All Ressource found",
+            "results" => $callModel,
+        ];
+        }
+        else {
+            $response = [
+                "results" => $callModel,
+                "ok" => false,
+                "message" => "Ressource not found"];
+        }
+        return $this->Tojson($response);
+        // $allPropertys = $callModel;
+        // ob_start();
+        // // extract($callModel);
+        // require "view/allProperty.php";
+        // return ob_get_clean();
     }
 
     public function obtainLimit($limite){
@@ -37,7 +55,24 @@ class apiController{
     public function cibleId($id){
         $initModel = new apiModel();
         $callModel = $initModel->cible($id);
-        return $this->Tojson($callModel);
+        if ($callModel) {
+            $response = [
+            "ok" => true,
+            "message" => "Ressource found",
+            "results" => $callModel,
+        ];
+        }
+        else {
+            $response = [
+                "results" => $callModel,
+                "ok" => false,
+                "message" => "Ressource not found"];
+        }
+        return $this->Tojson($response);
+        // $property = $callModel;
+        // ob_start();
+        // require "view/show.php";
+        // return ob_get_clean();
     }
 
     // public function cibleId2($id){
@@ -50,7 +85,23 @@ class apiController{
     public function unset($id){
         $initModel = new apiModel();
         $callModel = $initModel->unset($id);
-        return $this->Tojson($callModel);
+        if ($callModel) {
+            $response = [
+                "ok" => false,
+                "message" => "Ressource not found"
+            ];
+        }
+        else {
+            $response = [
+                "ok" => true,
+                "message" => "Deleted succesfully"
+            ];
+        }
+        
+        return $this->Tojson($response);
+        // ob_start();
+        // require "view/delete.php";
+        // return ob_get_clean();
     }
 
     public function search($key){

@@ -1,5 +1,5 @@
 <?php
-    $allPropertys = json_decode(file_get_contents("http://localhost/Testperso1/APIGESTION/view/allProperty"));
+    // $allPropertys = json_decode(file_get_contents("http://192.168.64.2/Testperso1/APIGESTION/view/allProperty"));
     ob_start();
 ?>
     <h1>
@@ -25,9 +25,9 @@
                 <em>Localisation :</em> <h3><?= $property->location ;?></h3>
             </div>
             <div class="group">
-                <a href="/Testperso1/APIGESTION/view/deleteProperty/<?= $property->id ;?>" class="delete" >supp</a>
+                <a href="/TestPerso1/APIGESTION/property/delete/<?= $property->id ;?>/" class="delete" >supp</a>
                 <a href="update.php?id=<?= $property->id ;?>" class="update" >modif</a>
-                <a href="show.php?id=<?= $property->id ;?>" class="show" >voir</a>
+                <a href="/TestPerso1/APIGESTION/property/<?= $property->id ;?>/" class="show" >voir</a>
             </div>
         </div>
     <?php endforeach; ?>

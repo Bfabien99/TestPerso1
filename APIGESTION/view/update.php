@@ -1,5 +1,5 @@
 <?php
-    $property = json_decode(file_get_contents("http://localhost/Testperso1/APIGESTION/view/updateProperty/".$_GET["id"]));
+    $property = json_decode(file_get_contents("http://192.168.64.2/Testperso1/APIGESTION/view/updateProperty/".$_GET["id"]));
     ob_start();
 ?>
     <h1>
