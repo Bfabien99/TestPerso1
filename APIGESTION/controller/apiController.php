@@ -13,13 +13,39 @@ class apiController{
     public function save($name, $tel, $location, $area, $details, $price){
         $initModel = new apiModel();
         $callModel = $initModel->set($name, $tel, $location, $area, $details, $price);
-        return $this->Tojson($callModel);
+        if ($callModel) {
+            $response = [
+            "ok" => true,
+            "message" => "Ressource Create",
+            "results" => $callModel,
+        ];
+        }
+        else {
+            $response = [
+                "results" => $callModel,
+                "ok" => false,
+                "message" => "Ressource not created"];
+        }
+        return $this->Tojson($response);
     }
 
     public function update($id,$name, $tel, $location, $area, $details, $price){
         $initModel = new apiModel();
         $callModel = $initModel->update($id, $name, $tel, $location, $area, $details, $price);
-        return $this->Tojson($callModel);
+        if ($callModel) {
+            $response = [
+            "ok" => true,
+            "message" => "Ressource Create",
+            "results" => $callModel,
+        ];
+        }
+        else {
+            $response = [
+                "results" => $callModel,
+                "ok" => false,
+                "message" => "Ressource not created"];
+        }
+        return $this->Tojson($response);
     }
 
     public function obtainAll(){

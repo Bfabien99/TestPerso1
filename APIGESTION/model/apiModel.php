@@ -27,16 +27,16 @@ class apiModel{
         
         $db = $this->dbConnect();
         $query = $db->prepare('INSERT INTO property(owner, tel, postdate, location, area, details, price) VALUES (:name, :tel, :date, :location, :area, :details, :price)');
-        $query->execute([
+        $save=$query->execute([
             'name' => $name,
             'tel' => $tel,
-            'date' => date('Y-m-d H-M-i'),
+            'date' => date('Y-m-d H:i:s'),
             'location' => $location,
             'area' => $area,
             'details' => $details,
             'price' => $price
         ]);
-
+        return $save;
     }
 
     public function getLimite($limite)
@@ -108,16 +108,18 @@ class apiModel{
     {
         $db = $this->dbConnect();
         $query = $db->prepare('UPDATE property SET owner=:name, tel=:tel, postdate=:date, location=:location, area=:area, details=:details, price=:price WHERE id=:id');
-        $query->execute([
+        $save=$query->execute([
             'id' => $id,
             'name' => $name,
             'tel' => $tel,
-            'date' => date('Y-m-d H-M-i'),
+            'date' => date('Y-m-d H:i:s'),
             'location' => $location,
             'area' => $area,
             'details' => $details,
             'price' => $price
         ]);
+
+        return $save;
     }
 
 }

@@ -85,10 +85,34 @@ $router->map('GET','/TestPerso1/APIGESTION/property/[i:id]/',function($id){
 });
 
 //Route pour supprimer une propriété
-$router->map('GET','/TestPerso1/APIGESTION/property/delete/[i:id]/',function($id){
+$router->map('DELETE','/TestPerso1/APIGESTION/property/delete/[i:id]/',function($id){
     require_once 'controller/apiController.php';
     $initController = new apiController;
     $Call = $initController->unset($id);
+    echo $Call; 
+});
+
+//Route pour ajouter une propriété
+$router->map('POST','/TestPerso1/APIGESTION/property/save/',function(){
+     require_once 'controller/apiController.php';
+     $initController = new apiController;
+     $Call = $initController->save($_POST['owner'],$_POST['tel'],$_POST['location'],$_POST['area'],$_POST['details'],$_POST['price']);
+     echo $Call; 
+});
+
+//Route pour voir une propriété (update)
+$router->map('GET','/TestPerso1/APIGESTION/property/update/[i:id]/',function($id){
+    require_once 'controller/apiController.php';
+    $initController = new apiController;
+    $Call = $initController->cibleId($id);
+    echo $Call; 
+});
+
+//Route pour voir une propriété (update)
+$router->map('POST','/TestPerso1/APIGESTION/property/update/',function(){
+    require_once 'controller/apiController.php';
+    $initController = new apiController;
+    $Call = $initController->update($_POST['id'],$_POST['owner'],$_POST['tel'],$_POST['location'],$_POST['area'],$_POST['details'],$_POST['price']);
     echo $Call; 
 });
 
