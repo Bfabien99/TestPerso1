@@ -1,5 +1,5 @@
 var invocation = new XMLHttpRequest();
-const url = 'http://192.168.64.2/TestPerso1/APIGESTION/property/update/';
+const url = 'http://localhost/TestPerso1/APIGESTION/property/update/';
 
 const myForm = document.getElementById('myForm');
 
@@ -13,7 +13,7 @@ let ids = document.getElementById('id');
 
 
 id=localStorage.getItem("identifiant")
-fetch('http://192.168.64.2/TestPerso1/APIGESTION/property/update/'+id+'/')
+fetch('http://localhost/TestPerso1/APIGESTION/property/update/'+id+'/')
     .then( response => response.json()).then(data=>{
         if (data.ok=true) {
             owner.value = data.results.owner
@@ -41,7 +41,7 @@ myForm.addEventListener('submit', function(e){
     
         if (owner!==null) {
              
-                fetch('http://192.168.64.2/TestPerso1/APIGESTION/property/update/', {
+                fetch('http://localhost/TestPerso1/APIGESTION/property/update/', {
                     method: 'POST',
                     body:formData
                }).then(response => response.json()).then(

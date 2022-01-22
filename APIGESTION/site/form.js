@@ -21,7 +21,7 @@ myForm.addEventListener('submit', function(e){
 
     if (owner!==null) {
          
-            fetch('http://192.168.64.2/TestPerso1/APIGESTION/property/save/', {
+            fetch('http://localhost/TestPerso1/APIGESTION/property/save/', {
                 method: 'POST',
                 body:formData
            }).then(response => response.json()).then(
