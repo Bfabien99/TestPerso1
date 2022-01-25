@@ -1,4 +1,4 @@
-id=localStorage.getItem("identifiant")
+id=localStorage.getItem("affichage")
 var invocation = new XMLHttpRequest();
 const url = 'http://localhost/TestPerso1/APIGESTION/property/'+id+'/';
 const box = document.querySelector('.box');
